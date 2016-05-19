@@ -1,9 +1,31 @@
-﻿@{
+﻿@*@{
     ViewBag.Title = "Contact";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
+
+
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+</html>
+
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
 <address>
     One Microsoft Way<br />
     Redmond, WA 98052-6399<br />
@@ -11,7 +33,45 @@
     425.555.0100
 </address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+
+<br />
+<br />
+<div class="container">
+    <div id="form-content" class="modal fade" style="display: normal;">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>Send me a message</h3>
+        </div>
+        <div id="modalbod" class="modal-body">
+            <form class="contact" name="contact">
+                <label class="label" for="name">Your Name</label><br>
+                <input type="text" name="name" class="input-xlarge"><br>
+                <label class="label" for="email">Your E-mail</label><br>
+                <input type="email" name="email" class="input-xlarge"><br>
+                <label class="label" for="message">Enter a Message</label><br>
+                <textarea name="message" class="input-xlarge"></textarea>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <input class="btn btn-success" type="submit" value="Send!" id="submit">
+            <a href="#" class="btn" data-dismiss="modal">Nah.</a>
+        </div>
+    </div>
+    <div id="thanks">
+        <p>
+            <a data-toggle="modal" href="#form-content" class="btn btn-primary btn-large">
+                Send an email!
+            </a>
+        </p>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#submit").click(function () {
+            $("#modalbod").animate({
+                height: 'toggle'
+            });
+        });
+    });
+</script>
